@@ -32,36 +32,51 @@ app.get("/", (req, res) => {
 /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
 
-const httpServer = createServer(app);
+// const httpServer = createServer(app);
 
-const io = new Server(httpServer, {
-	cors: { origin: ["http://localhost:3000"] },
-});
+// const io = new Server(httpServer, {
+// 	cors: { origin: ["http://localhost:3000"] },
+// });
 
-io.on("connection", (socket) => {
-	MenuItem.watch().on("change", (change) => {
-		socket.emit("menuUpdate");
-	});
-	OrderList.watch().on("change", (change) => {
-		socket.emit("newOrder");
-	});
-	ProcessedOrder.watch().on("change", (change) => {
-		socket.emit("orderUpdate");
-	});
-});
+// io.on("connection", (socket) => {
+// 	MenuItem.watch().on("change", (change) => {
+// 		socket.emit("menuUpdate");
+// 	});
+// 	OrderList.watch().on("change", (change) => {
+// 		socket.emit("newOrder");
+// 	});
+// 	ProcessedOrder.watch().on("change", (change) => {
+// 		socket.emit("orderUpdate");
+// 	});
+// });
 
 // httpServer.listen(port);
 
 ///////////////////////////////////////////
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
-mongoose
-	.connect(process.env.CONNECTION_URL)
-	.then(() =>
-		httpServer.listen(port, () => {
-			console.log(`mongooseIndex and socketIO on port ${port}`);
-		})
-	)
-	.catch((error) =>
-		console.log(`Mongo db is disconnected with error=>{${error}}`)
-	);
+// mongoose
+// 	.connect(process.env.CONNECTION_URL)
+// 	.then(() =>
+// 		// httpServer.listen(port, () => {
+// 		// 	console.log(`mongooseIndex and socketIO on port ${port}`);
+// 		// })
+// 		console.log(`mongo running on port ${port}`)
+// 	)
+// 	.catch((error) =>
+// 		console.log(`Mongo db is disconnected with error=>{${error}}`)
+// 	);
+
+app.listen(port, () => {
+	mongoose
+		.connect(process.env.CONNECTION_URL)
+		.then(() =>
+			// httpServer.listen(port, () => {
+			// 	console.log(`mongooseIndex and socketIO on port ${port}`);
+			// })
+			console.log(`app and mongo running on port ${port}`)
+		)
+		.catch((error) =>
+			console.log(`Mongo db is disconnected with error=>{${error}}`)
+		);
+});
