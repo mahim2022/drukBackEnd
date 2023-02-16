@@ -8,6 +8,21 @@ import { MenuItem } from "../SchemaModel/RestaurantsSchema.js";
 import { User } from "../SchemaModel/UsersScehma/UsersSchema.js";
 // const mongoose = require("mongoose");
 
+export const createBar = async (req, res) => {
+	const { barName, location } = req.body;
+	if (await Bar.find({ barName: barName })) {
+		res.status(403).send("Bar already Exits");
+	} else {
+		const newBar = new Bar({ barName, location });
+		try {
+			const success = await newBar.save();
+			res.status(200).send(success);
+		} catch (error) {
+			res.status(400).send(error);
+		}
+	}
+};
+
 export const getBar = async (req, res) => {
 	try {
 		const post = await Bar.find();
