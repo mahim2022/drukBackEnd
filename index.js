@@ -21,8 +21,8 @@ app.use(bodyParser.json({ limit: "30mb", extended: "true" }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: "true" }));
 app.use(
 	cors({
-		origin: "https://modpanda.netlify.app",
-		optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+		// origin: "https://modpanda.netlify.app",
+		origin: "*",
 	})
 );
 
