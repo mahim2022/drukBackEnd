@@ -4,14 +4,20 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import userRoutes from "./routes/UserRoutes.js";
-import { Server } from "socket.io";
-import { createServer } from "http";
-import {
-	MenuItem,
-	OrderList,
-	ProcessedOrder,
-} from "./SchemaModel/RestaurantsSchema.js";
+// import { Server } from "socket.io";
+// import { createServer } from "http";
+// import {
+// 	MenuItem,
+// 	OrderList,
+// 	ProcessedOrder,
+// } from "./SchemaModel/RestaurantsSchema.js";
 import dotenv from "dotenv";
+import path from "path";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 dotenv.config();
 const app = express();
@@ -30,9 +36,10 @@ app.use(
 app.use("/post", postFunctions);
 ////for getting customerUserData///
 app.use("/customer", userRoutes);
-app.get("/", (req, res) => {
-	res.send("Hello to DRUK_API");
-});
+// app.get("/", (req, res) => {
+// 	res.send("Hello to DRUK_API");
+// });
+app.use(express.static(path.join(__dirname + "/public")));
 
 /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////

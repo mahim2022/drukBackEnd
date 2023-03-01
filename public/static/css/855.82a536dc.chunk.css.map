@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/855.82a536dc.chunk.css","mappings":"AAAA,iBAGC,cAAe,CACf,QAAS,CAHT,yBAAkB,CAAlB,sBAAkB,CAAlB,iBAAkB,CAClB,SAID","sources":["Component/Pages/MenuPage/MenuPage.css"],"sourcesContent":[".cartUpdateAlert {\n\twidth: fit-content;\n\tz-index: 1;\n\tposition: fixed;\n\ttop: 85vh;\n\t/* display: none; */\n}\n"],"names":[],"sourceRoot":""}
