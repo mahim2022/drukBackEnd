@@ -4,4 +4,4 @@ COPY . .
 RUN npm i pm2 -g
 RUN npm i
 # CMD ["npm","run","production"]
-CMD ["pm2-runtime", "app.js"]
+CMD ["pm2-runtime", "index.js"]
