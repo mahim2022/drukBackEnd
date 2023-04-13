@@ -8,7 +8,8 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "nodemon index.js",
-		"production": "pm2 start index.js -i max"
+		"production": "pm2 start index.js -i max",
+		"stop":"pm2 delete index"
 	},
 	"author": "",
 	"license": "ISC",

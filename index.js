@@ -4,8 +4,8 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import userRoutes from "./routes/UserRoutes.js";
-import { Server } from "socket.io";
-import { createServer } from "http";
+// import { Server } from "socket.io";
+// import { createServer } from "http";
 import {
 	MenuItem,
 	OrderList,
@@ -61,4 +61,4 @@ mongoose
 		console.log(`Mongo db is disconnected with error=>{${error}}`)
 	);
 
-	app.listen(port,()=>console.log(`App listening to port: ${port}`))
+app.listen(port,()=>console.log(`App listening to port: ${port}`))
