@@ -4,20 +4,14 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import userRoutes from "./routes/UserRoutes.js";
-// import { Server } from "socket.io";
-// import { createServer } from "http";
-// import {
-// 	MenuItem,
-// 	OrderList,
-// 	ProcessedOrder,
-// } from "./SchemaModel/RestaurantsSchema.js";
+import { Server } from "socket.io";
+import { createServer } from "http";
+import {
+	MenuItem,
+	OrderList,
+	ProcessedOrder,
+} from "./SchemaModel/RestaurantsSchema.js";
 import dotenv from "dotenv";
-import path from "path";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 dotenv.config();
 const app = express();
@@ -31,14 +25,12 @@ app.use(cors());
 app.use("/post", postFunctions);
 ////for getting customerUserData///
 app.use("/customer", userRoutes);
-// app.get("/", (req, res) => {
-// 	res.send("Hello to DRUK_API");
-// });
-app.use(express.static(path.join(__dirname + "/public")));
+app.get("/", (req, res) => {
+	res.send("Hello to DRUK_API");
+});
 
-/////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////
-
+/////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////
 // const httpServer = createServer(app);
 
 // const io = new Server(httpServer, {
@@ -62,28 +54,11 @@ app.use(express.static(path.join(__dirname + "/public")));
 ///////////////////////////////////////////
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
-// mongoose
-// 	.connect(process.env.CONNECTION_URL)
-// 	.then(() =>
-// 		// httpServer.listen(port, () => {
-// 		// 	console.log(`mongooseIndex and socketIO on port ${port}`);
-// 		// })
-// 		console.log(`mongo running on port ${port}`)
-// 	)
-// 	.catch((error) =>
-// 		console.log(`Mongo db is disconnected with error=>{${error}}`)
-// 	);
+mongoose
+	.connect(process.env.CONNECTION_URL)
+	.then(()=>console.log(`mongoose connected`))
+	.catch((error) =>
+		console.log(`Mongo db is disconnected with error=>{${error}}`)
+	);
 
-app.listen(port, () => {
-	mongoose
-		.connect(process.env.CONNECTION_URL)
-		.then(() =>
-			// httpServer.listen(port, () => {
-			// 	console.log(`mongooseIndex and socketIO on port ${port}`);
-			// })
-			console.log(`app and mongo running on port ${port}`)
-		)
-		.catch((error) =>
-			console.log(`Mongo db is disconnected with error=>{${error}}`)
-		);
-});
+	app.listen(port,()=>console.log(`App listening to port: ${port}`))

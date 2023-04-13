@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/927.27a21429.chunk.css","mappings":"AAAA,MACC,qBACD,CACA,WACC,kCACD","sources":["Component/Pages/StartPage/StartPage.css"],"sourcesContent":[".body {\n\tbackground-color: black;\n}\n.font-link {\n\tfont-family: \"Dancing Script\", cursive;\n}\n"],"names":[],"sourceRoot":""}
