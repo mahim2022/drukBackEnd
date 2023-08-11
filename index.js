@@ -7,9 +7,9 @@ import userRoutes from "./routes/UserRoutes.js";
 // import { Server } from "socket.io";
 // import { createServer } from "http";
 import {
-	MenuItem,
-	OrderList,
-	ProcessedOrder,
+  MenuItem,
+  OrderList,
+  ProcessedOrder,
 } from "./SchemaModel/RestaurantsSchema.js";
 import dotenv from "dotenv";
 
@@ -26,7 +26,7 @@ app.use("/post", postFunctions);
 ////for getting customerUserData///
 app.use("/customer", userRoutes);
 app.get("/", (req, res) => {
-	res.send("Hello to DRUK_API");
+  res.send("Hello to DRUK_API");
 });
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -55,10 +55,10 @@ app.get("/", (req, res) => {
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 mongoose
-	.connect(process.env.CONNECTION_URL)
-	.then(()=>console.log(`mongoose connected`))
-	.catch((error) =>
-		console.log(`Mongo db is disconnected with error=>{${error}}`)
-	);
+  .connect(process.env.CONNECTION_URL)
+  .then(() => console.log(`mongoose connected`))
+  .catch((error) =>
+    console.log(`Mongo db is disconnected with error=>{${error}}`)
+  );
 
-app.listen(port,()=>console.log(`App listening to port: ${port}`))
+app.listen(port, () => console.log(`App listening to port: ${port}`));
